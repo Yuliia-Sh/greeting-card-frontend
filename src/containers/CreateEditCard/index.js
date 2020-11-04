@@ -31,10 +31,7 @@ export class CreateEditCard extends Component {
 
         const idCard = this.getIdFromPath();
 
-        let congragulations;
-        if (this.state.card.id > 0) {
-            congragulations = this.state.blocks.map((block) => (<Block {...this.props} key={block.id} block={block} idCard={idCard} onDeleteBlock={this.deleteBlock}/>))
-        }
+        let congragulations = this.state.blocks.map((block) => (<Block {...this.props} key={block.id} block={block} idCard={idCard} onDeleteBlock={this.deleteBlock}/>));
 
         return (
             <div className="main-functions">
