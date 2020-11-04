@@ -1,0 +1,11 @@
+.filter__blocks {
+    display: flex;
+    justify-content: center;
+    margin-left: 170px;
+    border-radius: 5px;
+}
+
+.actions__row {
+    display: flex;
+    height: 40px;
+}

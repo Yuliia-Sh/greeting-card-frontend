@@ -1,0 +1,14 @@
+.optional-element_image {
+    border: 1px solid black;
+    border-radius: 14px;
+    height: 425px;
+    width: auto;
+}
+
+.optional-element {
+    margin-bottom: 50px;
+}
+
+.video {
+    height: 315px;
+} 
