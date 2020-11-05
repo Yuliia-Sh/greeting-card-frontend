@@ -22,7 +22,7 @@ export default function Menu(props) {
     return (
 
         <div className={classForRow}>
-            <Link to="/" className="navigation-link home">
+            <Link to="/home" className="navigation-link home">
                 <img src={home} alt=""/>
             </Link>
             {props.isLoggedIn && <Link to="/" className="navigation-link profile">

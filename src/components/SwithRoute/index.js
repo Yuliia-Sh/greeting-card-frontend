@@ -8,6 +8,7 @@ import Registration from '../Registration';
 import {Cards} from '../../containers/Cards';
 import CreateEditBlock from '../../containers/CreateEditBlock';
 import CreateEditCard from '../../containers/CreateEditCard';
+import Home from '../Home';
 
 
 export default function SwitchRoute(props) {
@@ -17,6 +18,7 @@ export default function SwitchRoute(props) {
     if (isLoggedIn)
         return (
             <Switch>
+                <Route path="/home" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
                 <Route path="/all_cards" component={Cards}/>
@@ -30,7 +32,14 @@ export default function SwitchRoute(props) {
     else
         return (
             <Switch>
-                <Route path="/" component={Login}/>
+                <Route exact path="/" component={Home}/>
+                <Route path="/home" component={Home}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/signup" component={Registration}/>
+                <Route path="/all_cards" component={Login}/>
+                <Route path="/create_card/:id" component={Login}/>
+                <Route path="/edit_card/:id" component={Login}/>
+                <Route path="/add_block/:idCard" component={Login}/>
             </Switch>
         )
 }

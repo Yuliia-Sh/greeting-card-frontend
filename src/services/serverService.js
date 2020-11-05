@@ -7,7 +7,6 @@ export const serverService = {
 
 async function sendRequest(url, methodRequest, data = {}) {
     console.log('sendRequest ' + config.apiUrl + url + ' method: ' + methodRequest);
-    console.log(data);
     try {
         const response = await fetch(config.apiUrl + url, {
             method: methodRequest,
@@ -27,7 +26,7 @@ async function sendRequest(url, methodRequest, data = {}) {
 
 
 async function getData(url) {
-    console.log('getData' + config.apiUrl + url);
+    console.log('getData ' + config.apiUrl + url);
     try {
         const response = await fetch(config.apiUrl + url);
         const jsonData = await response.json();
