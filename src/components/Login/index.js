@@ -31,7 +31,8 @@ class Login extends React.Component {
                     <form id="profile-text">
                         <input type="text" className="styled-as-input"
                                onChange={(event) => this.setState({login: event.target.value})}
-                               placeholder="email"/>
+                               placeholder="login"
+                               pattern="[a-zA-Zа-яА-Я0-9ёЁІіЇїґЄє]{1,30}"/>
                         <input type="password" className="password styled-as-input"
                                onChange={(event) => this.setState({password: event.target.value})}
                                placeholder="password"/>
