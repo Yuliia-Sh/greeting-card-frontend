@@ -1,7 +1,9 @@
-const apiUrl = 'http://greetteam-env.eba-zmednwgx.us-east-2.elasticbeanstalk.com/api/v1'
+const apiUrl = 'http://roma-env.eba-zvj2sbty.us-east-2.elasticbeanstalk.com/api/v1'
+const greetingUrl = 'https://main.d177anvw131z2v.amplifyapp.com/'
 
 const config = {
-    apiUrl
+    apiUrl,
+    greetingUrl
 }
 
 export default config
