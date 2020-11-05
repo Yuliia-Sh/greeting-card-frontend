@@ -1,4 +1,4 @@
-const apiUrl = 'http://cors-env.eba-rjrpxb5t.eu-north-1.elasticbeanstalk.com/api/v1'
+const apiUrl = process.env.REST_API + '/api/v1'
 const greetingUrl = 'https://main.d177anvw131z2v.amplifyapp.com/'
 
 const config = {
