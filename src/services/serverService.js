@@ -10,6 +10,7 @@ async function sendRequest(url, methodRequest, data = {}) {
     try {
         const response = await fetch(config.apiUrl + url, {
             method: methodRequest,
+            credentials: 'include',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +29,10 @@ async function sendRequest(url, methodRequest, data = {}) {
 async function getData(url) {
     console.log('getData ' + config.apiUrl + url);
     try {
-        const response = await fetch(config.apiUrl + url);
+        const response = await fetch(config.apiUrl + url, {
+            method: 'GET',
+            credentials: 'include'
+        });
         const jsonData = await response.json();
         console.log('Успех:', JSON.stringify(jsonData));
         return jsonData;

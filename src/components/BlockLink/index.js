@@ -10,7 +10,7 @@ export default function BlockLink(props) {
         return (
             <div className="optional-element video">
                 <iframe width="560px"
-                        height="100%"
+                        height="300px"
                         src={youtube_link}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

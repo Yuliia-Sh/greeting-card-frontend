@@ -33,7 +33,7 @@ export default function Menu(props) {
             </Link>}
             {props.isLoggedIn &&
             <Link to="/all_cards" className="navigation-link logout" onClick={(e) => handleLogout(e)}>
-                <img src={exit} alt="" className="navigation-link log-out"/>
+                <img src={exit} alt="" />
             </Link>}
         </div>
     )
