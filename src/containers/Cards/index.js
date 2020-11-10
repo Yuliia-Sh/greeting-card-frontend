@@ -5,7 +5,6 @@ import CardsFilterPages from "../../components/CardsFilterPages";
 import { cardService } from "../../services/cardService";
 import { userContext } from "../../context/userContext";
 import CardItems from "./CardItems";
-import data from "./data.json";
 
 export class Cards extends Component {
   constructor(props) {
