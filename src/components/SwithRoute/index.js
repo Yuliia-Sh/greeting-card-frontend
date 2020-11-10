@@ -21,9 +21,7 @@ export default function SwitchRoute(props) {
                 <Route path="/home" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
-                <Route path="/all_cards" component={Cards}/>
-                <Route path="/my_cards" component={Cards}/>
-                <Route path="/other_cards" component={Cards}/>
+                <Route path="/cards/:type" component={Cards}/>
                 <Route path="/create_card/:id" component={CreateEditCard}/>
                 <Route path="/edit_card/:id" component={CreateEditCard}/>
                 <Route path="/add_block/:idCard" component={CreateEditBlock}/>
@@ -36,7 +34,7 @@ export default function SwitchRoute(props) {
                 <Route path="/home" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
-                <Route path="/all_cards" component={Login}/>
+                <Route path="/cards/:type" component={Login}/>
                 <Route path="/create_card/:id" component={Login}/>
                 <Route path="/edit_card/:id" component={Login}/>
                 <Route path="/add_block/:idCard" component={Login}/>

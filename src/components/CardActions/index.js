@@ -11,7 +11,7 @@ export default function CardActions(props) {
     const deleteCard = () => {
         cardService.deleteCard(props.id)
                    .then(() => props.onDeleteCard(props.id))
-                   .then(() => props.history.push('/all_cards'));
+                   .then(() => props.history.push('/cards/my'));
     }
 
     const editLink = '/edit_card/' + props.id;
@@ -21,7 +21,7 @@ export default function CardActions(props) {
             <Link to={editLink}>
                 <img className="card-action edit" src={editImg} alt=""/>
             </Link>
-            <Link to="/all_cards" onClick={deleteCard}>
+            <Link to="/cards/my" onClick={deleteCard}>
                 <img src={deleteImg}
                    className="card-action"
                    alt=""

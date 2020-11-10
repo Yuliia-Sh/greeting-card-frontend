@@ -9,12 +9,12 @@ export default function CardCommandRow(props) {
 
     const finishCard = () => {
         cardService.finishCard(id);
-        props.history.push('/all_cards');
+        props.history.push('/cards/my');
     }
 
     const deleteCard = () => {
         cardService.deleteCard(id);
-        props.history.push('/all_cards');
+        props.history.push('/cards/my');
     }
 
     return (

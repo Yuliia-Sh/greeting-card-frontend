@@ -28,11 +28,11 @@ export default function Menu(props) {
             {props.isLoggedIn && <Link to="/" className="navigation-link profile">
                 <img src={user} alt=""/>
             </Link>}
-            {props.isLoggedIn && <Link to="/all_cards" className="navigation-link my-cards">
+            {props.isLoggedIn && <Link to="/cards/my" className="navigation-link my-cards">
                 <img src={photos} alt=""/>
             </Link>}
             {props.isLoggedIn &&
-            <Link to="/all_cards" className="navigation-link logout" onClick={(e) => handleLogout(e)}>
+            <Link to="/login" className="navigation-link logout" onClick={(e) => handleLogout(e)}>
                 <img src={exit} alt="" />
             </Link>}
         </div>
