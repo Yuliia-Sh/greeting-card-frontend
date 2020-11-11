@@ -9,7 +9,8 @@ class Login extends React.Component {
         super(props);
         this.state = {
             login: "",
-            password: ""
+            password: "",
+            errorMessage:""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,8 +18,14 @@ class Login extends React.Component {
 
     handleSubmit(event, loginUser) {
         event.preventDefault();
-        loginUser(this.state.login, this.state.password).then(() => {
-            this.props.history.push("/all_cards");
+        loginUser(this.state.login, this.state.password).then((errorMessage) => {
+            if (errorMessage) {
+              console.log(errorMessage.message);  
+              this.setState({errorMessage:errorMessage.message})
+            } else {
+              console.log('go to my cards');
+              this.props.history.push("/cards/my");
+            }
         });
 
     }
@@ -42,6 +49,7 @@ class Login extends React.Component {
                                     this.handleSubmit(event, loginUser)
                                 }}/>)}
                         </userContext.Consumer>
+                            <span>{this.state.errorMessage}</span>
                     </form>
                 </main>
             </div>

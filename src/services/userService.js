@@ -13,19 +13,12 @@ function login(login, password) {
         .then(response => {
             console.log(response);
             if (!response.ok) {
+                console.log('response not ok')
                 return response.json();
             } else {
                 localStorage.setItem('user', login);
                 return null;
             }
-        })
-        .then(message => {
-            if (message) {
-                console.log('message=' + message);
-                return message;
-            }
-            localStorage.setItem('user', login);
-            return null;
         });
 }
 
