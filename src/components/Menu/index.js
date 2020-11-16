@@ -25,7 +25,7 @@ export default function Menu(props) {
             <Link to="/home" className="navigation-link home">
                 <img src={home} alt=""/>
             </Link>
-            {props.isLoggedIn && <Link to="/" className="navigation-link profile">
+            {props.isLoggedIn && <Link to="/profile" className="navigation-link profile">
                 <img src={user} alt=""/>
             </Link>}
             {props.isLoggedIn && <Link to="/cards/my" className="navigation-link my-cards">

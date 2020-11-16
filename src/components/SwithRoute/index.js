@@ -1,14 +1,15 @@
 import React from 'react'
-import Login from '../Login';
 import {
     Switch,
     Route
 } from 'react-router-dom';
-import Registration from '../Registration';
 import {Cards} from '../../containers/Cards';
 import CreateEditBlock from '../../containers/CreateEditBlock';
 import CreateEditCard from '../../containers/CreateEditCard';
 import Home from '../Home';
+import Login from '../../forms/user/Login';
+import Registration from '../../forms/user/Registration';
+import Profile from '../../forms/user/Profile';
 
 
 export default function SwitchRoute(props) {
@@ -21,6 +22,7 @@ export default function SwitchRoute(props) {
                 <Route path="/home" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
+                <Route path="/profile" component={Profile}/>
                 <Route path="/cards/:type" component={Cards}/>
                 <Route path="/create_card/:id" component={CreateEditCard}/>
                 <Route path="/edit_card/:id" component={CreateEditCard}/>

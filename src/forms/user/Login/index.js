@@ -1,7 +1,7 @@
 import React from 'react'
-import './style.css';
-import LoginFilterPages from '../LoginFilterPages';
-import {userContext} from '../../context/userContext';
+import '../style.css';
+import LoginFilterPages from '../../../components/LoginFilterPages';
+import {userContext} from '../../../context/userContext';
 
 class Login extends React.Component {
 

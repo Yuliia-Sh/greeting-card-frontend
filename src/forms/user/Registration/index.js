@@ -1,7 +1,8 @@
 import React from 'react'
-import {userService} from '../../services/userService';
-import LoginFilterPages from '../LoginFilterPages'
+import {userService} from '../../../services/userService';
+import LoginFilterPages from '../../../components/LoginFilterPages'
 import './style.css';
+import '../style.css';
 
 class Registration extends React.Component {
     constructor(props) {
