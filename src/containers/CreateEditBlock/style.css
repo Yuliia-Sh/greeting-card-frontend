@@ -2,16 +2,6 @@
     padding-bottom: 0px;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #C1CF7A;
-    min-width: 100vw;
-    max-width: 100vh;
-    min-height: 100vh;
-}
-
 
 .text-editor {
     display: block;

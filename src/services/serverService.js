@@ -2,7 +2,8 @@ import config from './config.js';
 
 export const serverService = {
     sendRequest,
-    getData
+    getData,
+    sendFormData
 }
 
 async function sendRequest(url, methodRequest, data = {}) {
@@ -36,6 +37,26 @@ async function getData(url) {
         const jsonData = await response.json();
         console.log('Успех:', JSON.stringify(jsonData));
         return jsonData;
+    } catch (error) {
+        console.error('Ошибка:', error);
+        throw error;
+    }
+}
+
+async function sendFormData(url, method, formData) {
+    console.log('sendFormData ' + config.apiUrl + url + ' method: ' + method);
+    console.log(formData.get('firstName'));
+    console.log(formData.get('lastName'));
+    console.log(formData.get('login'));
+    console.log(formData.get('id'));
+    console.log(formData.get('profileFile'));
+    try {
+        const response = await fetch(config.apiUrl + url, {
+            method: method,
+            credentials: 'include',
+            body: formData
+        });
+        return response;
     } catch (error) {
         console.error('Ошибка:', error);
         throw error;

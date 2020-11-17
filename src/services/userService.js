@@ -4,7 +4,10 @@ export const userService = {
     login,
     logout,
     getUser,
-    registerUser
+    registerUser,
+    getProfile,
+    updateProfile,
+    updatePassword
 }
 
 function login(login, password) {
@@ -33,5 +36,26 @@ function getUser() {
 
 
 function registerUser(data) {
-    serverService.sendRequest('/user', 'POST', data);
+    return serverService.sendRequest('/user', 'POST', data);
+}
+
+function getProfile() {
+    const user = {
+        id: 1,
+        login:'Yuliya',
+        firstName:'Юлия',
+        lastName:'Шинкаренко',
+        pathToPhoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7M3H7qt0xHKizkXMJSp9b8PeWqv0avJ9iqg&usqp=CAU'
+    }
+    return user;
+    //return serverService.getData('/user'+ localStorage.getItem('user'));
+}
+    
+function updateProfile(formData) {
+   return serverService.sendFormData('/user', 'PUT', formData);
+}
+    
+function updatePassword(oldPassword, newPassword) {
+    console.log('update password ');
+    
 }

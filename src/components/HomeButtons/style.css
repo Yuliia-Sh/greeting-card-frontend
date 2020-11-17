@@ -21,8 +21,8 @@
 	color: black;
 	border-radius: 1px;
 }
-.yellow-button {}
-.white-button {
+
+.white {
 	background-color: white;
 	border: 6px solid #FEE600;
 	border-radius: 5px;

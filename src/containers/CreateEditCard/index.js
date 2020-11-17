@@ -36,7 +36,7 @@ export class CreateEditCard extends Component {
         return (
             <div className="main-functions">
                 <CardCommandRow {...this.props} idCard={idCard}/>
-                <main className="container">
+                <main className="card-container">
                     {congragulations}
                 </main>
             </div>
