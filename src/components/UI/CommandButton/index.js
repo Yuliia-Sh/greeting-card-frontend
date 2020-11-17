@@ -3,9 +3,9 @@ import './style.css'
 
 export default function CommandButton(props) {
     return (
-        <button className={props.className}
-                onClick={props.action}>
-            {props.caption}
-        </button>
+        <input type="submit" className={props.className}
+                onClick={props.action}
+                value={props.caption}
+                form={props.form ? props.form : ''}/>
     )
 }

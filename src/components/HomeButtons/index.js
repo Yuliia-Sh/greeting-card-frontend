@@ -18,13 +18,13 @@ export default function HomeButtons(props) {
     return (
         <div className="call-to-action__row">
            <Link to="/home" className="call-to-action yellow-button" onClick={() => handleCopy()}>Share our link</Link>
-           <Link to="/cards/my" className="call-to-action white-button">Go to My Cards</Link>
+           <Link to="/cards/my" className="call-to-action white">Go to My Cards</Link>
         </div>
     )} else {
     return (
         <div className="call-to-action__row">
              <Link to="/signup" className="call-to-action yellow-button">Sign Up</Link>
-             <Link to="/login" className="call-to-action white-button">Log In</Link>
+             <Link to="/login" className="call-to-action white">Log In</Link>
         </div>
     )
     }

@@ -10,6 +10,7 @@ export default function ChangePasswordCommandRow(props) {
         <CommandButton
           className="yellow-button command-button"
           caption="Save password"
+          form="password-changeable"
           action={props.onSubmit}
         />
         <CommandButtonLink

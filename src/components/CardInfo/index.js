@@ -15,8 +15,8 @@ export default function CardInfo(props) {
                 <img src={imgSrc} alt=""/>
             </Link>
             <div className="card-details__column">
-                <div className="card-name styled-as-input"> {props.name}</div>
-                <div className="card-author styled-as-input"> {props.userName}</div>
+                <div className="card-name card-styled-as-input"> {props.name}</div>
+                <div className="card-author card-styled-as-input"> {props.userName}</div>
             </div>
         </div>
     )

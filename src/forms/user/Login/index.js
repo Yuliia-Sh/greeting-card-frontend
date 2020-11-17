@@ -40,16 +40,19 @@ class Login extends React.Component {
                                onChange={(event) => this.setState({login: event.target.value})}
                                placeholder="login"
                                pattern="[a-zA-Zа-яА-Я0-9ёЁІіЇїґЄє]{1,30}"/>
+                        <br></br>
                         <input type="password" className="password styled-as-input"
                                onChange={(event) => this.setState({password: event.target.value})}
                                placeholder="password"/>
+                        <br></br>
+                        <br></br>      
                         <userContext.Consumer>
                             {({loginUser}) => (
                                 <input type="submit" className="command-button" value="Log in" onClick={(event) => {
                                     this.handleSubmit(event, loginUser)
                                 }}/>)}
                         </userContext.Consumer>
-                            <span>{this.state.errorMessage}</span>
+                        <span className="error">{this.state.errorMessage}</span>
                     </form>
                 </main>
             </div>

@@ -9,39 +9,44 @@ class ProfilePicture extends React.Component {
     super(props);
     this.state = {
       file: null,
-      imageProfile: props.imageProfile ? props.imageProfile : ''
+      imageProfile: props.imageProfile ? props.imageProfile : "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
+    if (!event.target.files || event.target.files.length === 0) {
+      this.setState({file:null});
+      return;
+    } 
+    
     this.setState({
-      file: URL.createObjectURL(event.target.files[0])
-    })
+        file: URL.createObjectURL(event.target.files[0]),
+      });
+    
   }
 
-  showPicture() {
-      if (this.state.imageProfile.length > 0) {
-        return <img src={this.state.imageProfile} alt="" />
-      } else if (this.state.file) {
-        return <img src={this.state.file} alt=""/>  
-      } else {
-        return <img src={userImg} alt="" className="no-picture" />  
-      }
+  showPicture() { 
+    if (this.state.imageProfile.length > 0) {
+      return <img src={this.state.imageProfile} alt="" />;
+    } else if (this.state.file != null) {
+      return <img src={this.state.file} alt="" />;
+    } else {
+      return
+         <img src={userImg} alt="" className="no-picture" />
+    }
   }
-  
-  render() {
 
+  render() {   
     return (
       <div className="profile-picture__row">
         <div className="profile-picture-change__column">
           <label htmlFor="profile-picture-add" name="images">
             <img src={editImg} alt="" className="profile-type-icon" />
-
             <input
               type="file"
               id="profile-picture-add"
-              name="image-files"
+              name="profileFile"
               accept="image/*"
               className="files-input"
               onChange={this.handleChange}
@@ -50,7 +55,7 @@ class ProfilePicture extends React.Component {
           <button></button>
         </div>
         <div className="profile-picture__picture none">
-          {this.showPicture()}
+        {this.showPicture()}
         </div>
       </div>
     );
