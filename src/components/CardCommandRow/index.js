@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import CommandButton from '../UI/CommandButton'
+import CommandButtonLink from '../UI/CommandButton/CommandButtonLink'
 import {cardService} from '../../services/cardService';
 
 export default function CardCommandRow(props) {
@@ -22,7 +22,8 @@ export default function CardCommandRow(props) {
             </div>
 
             <div className="actions__row">
-                <Link to={'/add_block/' + id} className="yellow-button command-button">+ Add block</Link>
+                <CommandButtonLink to={'/add_block/' + id} className="yellow-button command-button" caption="+ Add block" />
+                <CommandButtonLink to={'/card_users/' +id} className="no-margin-left yellow-button command-button" caption="List of collaborators"/> 
                 <CommandButton className="white-button command-button" caption="Finish Card" action={finishCard}/>
                 <CommandButton className="yellow-button command-button" caption="Delete Card" action={deleteCard}/>
             </div>
