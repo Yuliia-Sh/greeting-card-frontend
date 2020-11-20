@@ -1,5 +1,5 @@
 import React from 'react'
-import {FormCreateCard} from '../FormCreateCard';
+import FormAdd from '../../forms/common/FormAdd';
 import FilterButton from '../UI/FilterButton'
 import './style.css';
 
@@ -13,7 +13,9 @@ export default function CardsFilterPages(props) {
     return (
         <div className="command__row">
             {filter}
-            <FormCreateCard {...props}/>
+            <FormAdd {...props} onSubmit={props.createCardFunction}
+                     inputPlaceholder = "Name new card"
+                     buttonCaption = "Create card"/>
         </div>
     )
 }
