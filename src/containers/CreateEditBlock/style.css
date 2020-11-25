@@ -63,10 +63,19 @@
     margin-right: 4px;
 }
 
+.element-adder-icon {
+	height: 45px;
+	width: auto;
+}
+
 .links {
     border: none;
     opacity: 1;
 
     flex: 1 0 auto;
     font-size: 20px;
+}
+
+.files-input {
+	display: none;
 }

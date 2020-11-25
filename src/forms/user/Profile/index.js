@@ -19,20 +19,22 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const user = userService.getProfile();
-    this.setState({
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      login: user.login,
-      pathToPhoto: user.pathToPhoto,
-    });
+    userService.getProfile().then((user) =>
+      this.setState({
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        login: user.login,
+        pathToPhoto: user.pathToPhoto,
+      })
+    );
   }
 
   save(event) {
     event.preventDefault();
     const data = new FormData(this.form);
     data.append("id", this.state.id);
+    data.append("pathToPhoto", this.state.pathToPhoto);
     const firstName = data.get("firstName");
     const lastName = data.get("lastName");
     const login = data.get("login");
@@ -55,6 +57,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="main-functions">
         <ProfileCommandRow onSubmit={this.save} />
@@ -70,17 +73,17 @@ class Profile extends Component {
               <InputTextWithLabel
                 columnName="firstName"
                 labelText="First Name:"
-                value={this.state.firstName}
+                valueOfColumn={this.state.firstName}
               />
               <InputTextWithLabel
                 columnName="lastName"
                 labelText="Last Name:"
-                value={this.state.lastName}
+                valueOfColumn={this.state.lastName}
               />
               <InputTextWithLabel
                 columnName="login"
                 labelText="Login:"
-                value={this.state.login}
+                valueOfColumn={this.state.login}
               />
             </div>
           </form>

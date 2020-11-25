@@ -45,11 +45,6 @@ async function getData(url) {
 
 async function sendFormData(url, method, formData) {
     console.log('sendFormData ' + config.apiUrl + url + ' method: ' + method);
-    console.log(formData.get('firstName'));
-    console.log(formData.get('lastName'));
-    console.log(formData.get('login'));
-    console.log(formData.get('id'));
-    console.log(formData.get('profileFile'));
     try {
         const response = await fetch(config.apiUrl + url, {
             method: method,

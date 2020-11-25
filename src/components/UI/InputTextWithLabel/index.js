@@ -6,11 +6,19 @@ import { formValidator } from "../../../forms/user/formValidator";
 
 class InputTextWithLabel extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
+    //console.log('InputTextWithLabel')
+    //console.log(this.props)
     this.state = {
-        value: props.value ? props.value : '',
+        value: props.valueOfColumn !=="" ? props.valueOfColumn : "",
         errorMessage: ''
     }
+  }
+
+  componentDidMount() {
+    const v = this.props.valueOfColumn !=="" ? this.props.valueOfColumn : "";
+    this.setState({value: v});
+    console.log(this.state);
   }
 
   inputChange = (event) => {
@@ -38,7 +46,7 @@ class InputTextWithLabel extends React.Component {
   }
  
  render() {
-
+  console.log(this.props.valueOfColumn)
   let inputType = "text";
   if (this.props.columnName.indexOf("password") > 0) {
     inputType = "password";
@@ -46,19 +54,19 @@ class InputTextWithLabel extends React.Component {
 
   return (
     <React.Fragment>
-    <div className="input-text-element__row">
-      <label htmlFor={this.props.columnName}> {this.props.labelText}</label>
-      <input
-        key = {this.props.columnName} 
-        type={inputType}
-        id={this.props.columnName}
-        className="styled-as-input margin-bottom"
-        name={this.props.columnName}
-        value={this.state.value}
-        onChange={this.inputChange}
-      />
-    </div>    
-    {this.showError()}
+      <div className="input-text-element__row">
+        <label htmlFor={this.props.columnName}> {this.props.labelText}</label>
+        <input
+          key = {this.props.columnName} 
+          type={inputType}
+          id={this.props.columnName}
+          className="styled-as-input margin-bottom"
+          name={this.props.columnName}
+          value={this.state.value ? this.state.value : this.props.valueOfColumn}
+          onChange={this.inputChange}
+        />
+      </div>    
+      {this.showError()}
     </React.Fragment>
   );
  }
