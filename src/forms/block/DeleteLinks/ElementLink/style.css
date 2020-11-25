@@ -1,0 +1,34 @@
+.element-with-checkbox {
+	display: flex;
+	margin-top: 36px;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:60px;
+    height:60px;
+    background:white;
+    border-radius:5px;
+    border:2px solid black;
+    margin-left: 18px;
+}
+
+.link-element {	
+	margin-top: 14px;
+	border: 1px solid black;
+	border-radius: 14px;
+	min-height: 62px;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.link-element_image {
+	height: 425px;
+	width: auto;
+}
+
+.link-element_audio {
+	height: 62px;
+}

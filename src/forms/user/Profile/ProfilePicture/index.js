@@ -8,8 +8,7 @@ class ProfilePicture extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: null,
-      imageProfile: props.imageProfile ? props.imageProfile : "",
+      file: null
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,13 +26,13 @@ class ProfilePicture extends React.Component {
   }
 
   showPicture() { 
-    if (this.state.imageProfile.length > 0) {
-      return <img src={this.state.imageProfile} alt="" />;
-    } else if (this.state.file != null) {
+    console.log(this.props);
+    if (this.state.file != null) {
       return <img src={this.state.file} alt="" />;
+    } else if (this.props.imageProfile && this.props.imageProfile.length > 0) {
+      return <img src={this.props.imageProfile} alt="" />;
     } else {
-      return
-         <img src={userImg} alt="" className="no-picture" />
+      return <img src={userImg} alt="" className="no-picture" />;
     }
   }
 
