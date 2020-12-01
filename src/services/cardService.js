@@ -33,45 +33,15 @@ function finishCard(id) {
 }
 
 function deleteUsers(cardId, listUserId) {
-    console.log('cardService.deleteUsers ');
-    console.log(cardId);
-    console.log(listUserId);
-    
     let listOfObj = listUserId.map((id) => {let obj={}; obj["id"] = id; return obj;});
     console.log(listOfObj);
-    const makeServerRequest = new Promise((resolve, reject) => {
-        let responseFromServer = true;
-        if (responseFromServer) {
-            resolve();
-        }
-    });
-    return makeServerRequest;
-   // serverService.sendRequest(`/card/${cardId}/users`, 'DELETE', listOfObj);
+    return serverService.sendRequest(`/card/${cardId}/users`, 'DELETE', listOfObj);
 }
 
-function addUser(cardId, login) {
-    console.log('add user ');
-    console.log(cardId);
-    console.log(login);
-    const makeServerRequest = new Promise((resolve, reject) => {
-        let responseFromServer = true;
-        if (responseFromServer) {
-            resolve();
-        }
-    });
-
-    return makeServerRequest;
-    //return serverService.sendRequest(`/card/${cardId}/user`, 'POST', {login: login});
+function addUser(cardId, login) {    
+    return serverService.sendRequest(`/card/${cardId}/user`, 'POST', {login: login});
 }
     
 function getUsers(cardId) {
-   console.log('getUsers ' + cardId);
-   const makeServerRequest = new Promise((resolve, reject) => {
-    let responseFromServer = true;
-    if (responseFromServer) {
-        resolve(cardUsers);
-    }
-   });
-   return makeServerRequest;
-    //return serverService.getData(`/card/${cardId}/users`);
+   return serverService.getData(`/card/${cardId}/users`);
 }

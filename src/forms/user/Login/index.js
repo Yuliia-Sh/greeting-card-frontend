@@ -52,6 +52,7 @@ class Login extends React.Component {
                                     this.handleSubmit(event, loginUser)
                                 }}/>)}
                         </userContext.Consumer>
+                        <br></br>
                         <span className="error">{this.state.errorMessage}</span>
                     </form>
                 </main>
