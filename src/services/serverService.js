@@ -18,7 +18,7 @@ async function sendRequest(url, methodRequest, data = {}) {
             }
         });
         if (response.ok)
-            console.log('Успех:' + url + ' method: ' + methodRequest);
+            console.log('Успех:' + url + ' method: ' + methodRequest);   
         return response;
     } catch (error) {
         console.error('Ошибка:', error);

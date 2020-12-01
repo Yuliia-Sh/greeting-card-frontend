@@ -20,6 +20,7 @@ function login(login, password) {
                 return response.json();
             } else {
                 localStorage.setItem('user', login);
+                console.log(response.json());
                 return null;
             }
         });
@@ -40,14 +41,6 @@ function registerUser(data) {
 }
 
 function getProfile() {
-    /*const user = {
-        id: 1,
-        login:'Yuliya',
-        firstName:'Юлия',
-        lastName:'Шинкаренко',
-        pathToPhoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7M3H7qt0xHKizkXMJSp9b8PeWqv0avJ9iqg&usqp=CAU'
-    }
-    return user;*/
     return serverService.getData('/user');
 }
     
@@ -56,6 +49,5 @@ function updateProfile(formData) {
 }
     
 function updatePassword(oldPassword, newPassword) {
-    console.log('update password ');
-    
+    console.log('update password ');  
 }

@@ -22,7 +22,7 @@ export default class CardUsers extends Component {
   componentDidMount() {
     const cardId = this.props.location.pathname.replace("/card_users/", "");
     this.setState({ cardId: cardId });
-    this.readUsers();
+    this.readUsers(cardId);
   }
 
   uncheckSelected() {
@@ -34,7 +34,7 @@ export default class CardUsers extends Component {
     let usersIdToDelete = this.state.usersIdToDelete;
     if (usersIdToDelete.length > 0) {
         cardService.deleteUsers(this.state.cardId, usersIdToDelete)
-                   .then(() => this.readUsers());
+                   .then(() => this.readUsers(this.state.cardId));
     } else {
            alert("Nothing selected to delete");
     }
@@ -55,8 +55,8 @@ export default class CardUsers extends Component {
     }
   }
 
-  readUsers() {
-    cardService.getUsers(this.state.cardId).then((usersData) => {
+  readUsers(cardId) {
+    cardService.getUsers(cardId).then((usersData) => {
       this.setState({ users: usersData });
     });
   }
@@ -66,7 +66,7 @@ export default class CardUsers extends Component {
       alert("login is not correct!");
       return;
     }
-    cardService.addUser(this.state.cardId, login).then(() => this.readUsers());
+    cardService.addUser(this.state.cardId, login).then(() => this.readUsers(this.state.cardId));
   }
 
   render() {

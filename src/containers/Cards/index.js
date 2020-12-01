@@ -12,11 +12,13 @@ export class Cards extends Component {
     this.state = {
       cards: [],
     };
+    console.log('constructor Cards')
 
     this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
+    console.log('component did mount Cards')
     cardService.getCards().then((cardsData) => {
       this.setState({ cards: cardsData });
     });
@@ -34,6 +36,7 @@ export class Cards extends Component {
   }
 
   render() {
+    console.log('render Cards')
     const page = this.props.location.pathname.replace("/cards/", "") + "_cards";
 
     return (

@@ -40,6 +40,9 @@ export default function SwitchRoute(props) {
                 <Route path="/home" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
+                <Route path="/profile" component={Login}/>
+                <Route path="/card_users/:id" component={Login}/>
+                <Route path="/change_password" component={Login}/>
                 <Route path="/cards/:type" component={Login}/>
                 <Route path="/create_card/:id" component={Login}/>
                 <Route path="/edit_card/:id" component={Login}/>
