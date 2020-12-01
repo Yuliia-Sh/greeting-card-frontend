@@ -33,7 +33,7 @@ export default class FormAdd extends Component {
         />
         <CommandButton action={this.doAction} 
                        caption = {this.props.buttonCaption}
-                       className="add-form-button command-button"/>
+                       className="add-form-button"/>
       </form>
     );
   }

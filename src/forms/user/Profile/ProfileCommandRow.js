@@ -8,13 +8,13 @@ export default function ProfileCommandRow(props) {
       <div className="filter"></div>
       <div className="actions__row">
         <CommandButton
-          className="yellow-button command-button"
+          className="command-button--yellow"
           caption="Save changes"
           action={props.onSubmit}
         />
         <CommandButtonLink
           to="/change_password"
-          className="white-button command-button"
+          className="command-button--white"
           caption="Change password"
         />
       </div>

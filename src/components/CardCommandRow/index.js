@@ -22,10 +22,10 @@ export default function CardCommandRow(props) {
             </div>
 
             <div className="actions__row">
-                <CommandButtonLink to={'/add_block/' + id} className="yellow-button command-button" caption="+ Add block" />
-                <CommandButtonLink to={'/card_users/' +id} className="no-margin-left yellow-button command-button" caption="List of collaborators"/> 
-                <CommandButton className="white-button command-button" caption="Finish Card" action={finishCard}/>
-                <CommandButton className="yellow-button command-button" caption="Delete Card" action={deleteCard}/>
+                <CommandButtonLink to={'/add_block/' + id} className="command-button--yellow" caption="+ Add block" />
+                <CommandButtonLink to={'/card_users/' +id} className="command-button--no-margin-left command-button--yellow" caption="List of collaborators"/> 
+                <CommandButton className="command-button--white" caption="Finish Card" action={finishCard}/>
+                <CommandButton className="command-button--yellow" caption="Delete Card" action={deleteCard}/>
             </div>
         </div>
     )
