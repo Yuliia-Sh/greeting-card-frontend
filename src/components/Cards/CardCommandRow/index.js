@@ -1,7 +1,7 @@
 import React from 'react'
-import CommandButton from '../UI/CommandButton'
-import CommandButtonLink from '../UI/CommandButton/CommandButtonLink'
-import {cardService} from '../../services/cardService';
+import CommandButton from '../../UI/CommandButton'
+import CommandButtonLink from '../../UI/CommandButton/CommandButtonLink'
+import {cardService} from '../../../services/cardService';
 
 export default function CardCommandRow(props) {
     const id = props.idCard;

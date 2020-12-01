@@ -1,8 +1,8 @@
 import React from 'react'
 import './style.css';
 import {Link} from 'react-router-dom'
-import markImg from '../../assets/images/mark.png';
-import {blockService} from "../../services/blockService";
+import markImg from '../../../assets/images/mark.png';
+import {blockService} from "../../../services/blockService";
 
 export default function BlockActions(props) {
     const deleteBlock = () => {

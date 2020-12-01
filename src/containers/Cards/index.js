@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 
-import CardsFilterPages from "../../components/CardsFilterPages";
+import CardsFilterPages from "../../components/Cards/CardsFilterPages";
 import { cardService } from "../../services/cardService";
 import { userContext } from "../../context/userContext";
 import CardItems from "./CardItems";

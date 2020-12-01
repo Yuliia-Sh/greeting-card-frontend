@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css';
-import CommandButton from '../UI/CommandButton';
+import CommandButton from '../../UI/CommandButton';
 
 export default function BlockCommandRow(props) {
     /* function deleteBlock() {

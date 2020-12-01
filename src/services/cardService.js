@@ -1,5 +1,4 @@
 import {serverService} from "./serverService";
-import cardUsers from "./testdata/cardUsers.json";
 
 export const cardService = {
     getCards,

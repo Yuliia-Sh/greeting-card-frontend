@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BlockCommandRow from "../../components/BlockCommandRow";
+import BlockCommandRow from "../../components/Blocks/BlockCommandRow";
 import "./style.css";
 import addImg from "../../assets/images/add.png";
 import pictureImg from "../../assets/images/picture.png";
