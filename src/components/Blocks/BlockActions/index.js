@@ -17,7 +17,7 @@ export default function BlockActions(props) {
             <div className="block-actions__dropdown">
                 <img src={markImg} alt=""/>
                 <div className="block-actions">
-                    <Link to="/" className="dropdown-link">Edit block</Link>
+                    <Link to={"/edit_block/" + props.id} className="dropdown-link">Edit block</Link>
                     <Link to={'/edit_card/'+ props.idCard} className="dropdown-link" onClick={deleteBlock}>Delete block</Link>
                 </div>
             </div>
