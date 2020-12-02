@@ -4,6 +4,7 @@ import './style.css';
 import {Link} from 'react-router-dom'
 import editImg from '../../../assets/images/edit.jpg';
 import deleteImg from '../../../assets/images/delete.png';
+import leaveImg from '../../../assets/images/leave.png';
 import {cardService} from '../../../services/cardService';
 
 export default function CardActions(props) {
@@ -14,6 +15,14 @@ export default function CardActions(props) {
                    .then(() => props.history.push('/cards/my'));
     }
 
+
+    const leaveCard = () => {
+        cardService.leaveCard(props.id)
+                   .then(() => props.onDeleteCard(props.id))
+                   .then(() => props.history.push('/cards/other'));
+    }
+
+
     const editLink = '/edit_card/' + props.id;
 
     return (
@@ -21,12 +30,18 @@ export default function CardActions(props) {
             <Link to={editLink}>
                 <img className="card-action edit" src={editImg} alt=""/>
             </Link>
-            <Link to="/cards/my" onClick={deleteCard}>
+            {props.isMyCard && <Link to="/cards/my" onClick={deleteCard}>
                 <img src={deleteImg}
                    className="card-action"
                    alt=""
             />    
-            </Link>
+            </Link>}
+            {!props.isMyCard && <Link to="/cards/other" onClick={leaveCard}>
+                <img src={leaveImg}
+                   className="card-action"
+                   alt=""
+            />    
+            </Link>}
         </div>
     )
 }

@@ -36,7 +36,6 @@ export class Cards extends Component {
   }
 
   render() {
-    console.log('render Cards')
     const page = this.props.location.pathname.replace("/cards/", "") + "_cards";
 
     return (
@@ -45,9 +44,9 @@ export class Cards extends Component {
         <main className="container-cards">
           <div className="list-of-cards">
             <userContext.Consumer>
-              {({ user }) => (
+              {({ userId }) => (
                 <CardItems
-                  user={user}
+                  userId={userId}
                   page={page}
                   cards={this.state.cards}
                   {...this.props}

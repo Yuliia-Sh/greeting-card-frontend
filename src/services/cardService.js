@@ -5,6 +5,7 @@ export const cardService = {
     getCard,
     createCard,
     deleteCard,
+    leaveCard,
     finishCard,
     deleteUsers,
     addUser,
@@ -25,6 +26,10 @@ function createCard(nameCard) {
 
 function deleteCard(id) {
     return serverService.sendRequest(`/card/${id}`, 'DELETE');
+}
+
+function leaveCard(id) {
+    return serverService.sendRequest(`/card/${id}/user`, 'DELETE');
 }
 
 function finishCard(id) {

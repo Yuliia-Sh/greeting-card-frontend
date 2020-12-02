@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: "",
+      userId: 0,
     };
 
     this.logout = this.logout.bind(this);
@@ -19,16 +20,21 @@ class App extends React.Component {
 
   componentDidMount() {
     const userLogined = userService.getUser();
-    this.setState({ user: userLogined });
+    this.setState({
+      user: userLogined.user,
+      userId: parseInt(userLogined.userId),
+    });
   }
 
   login(name, password) {
     const login = name;
-    return userService.login(login, password).then((errorMessage) => {
-      if (errorMessage) {
-        return errorMessage;
+    return userService.login(login, password).then((result) => {
+      if (result.hasOwnProperty("message")) {
+        return result;
       } else {
-        this.setState({ user: login });
+        let userId = result.userId;
+        this.setState({ user: login, userId: userId });
+        userService.setUserId(userId);
       }
     });
   }
@@ -41,7 +47,8 @@ class App extends React.Component {
   render() {
     const userContextValue = {
       user: this.state.user,
-      loginUser: this.login
+      userId: this.state.userId,
+      loginUser: this.login,
     };
 
     return (
