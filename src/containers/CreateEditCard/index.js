@@ -3,12 +3,14 @@ import './style.css';
 import CardCommandRow from '../../components/Cards/CardCommandRow'
 import Block from '../../components/Blocks/Block';
 import {cardService} from '../../services/cardService';
+import { userContext } from '../../context/userContext';
 
 export class CreateEditCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blocks: []
+            blocks: [],
+            userIdCardAdmin:0
         }
 
         this.deleteBlock = this.deleteBlock.bind(this);
@@ -17,7 +19,9 @@ export class CreateEditCard extends Component {
     componentDidMount() {
         const id = this.getIdFromPath();
         cardService.getCard(id)
-            .then((cardsData) => this.setState({blocks : cardsData.congratulationList}));
+            .then((cardsData) => {this.setState({blocks : cardsData.congratulationList, userIdCardAdmin: cardsData.user.id});
+                                 }     
+            );
     }
 
     getIdFromPath = () => this.props.location.pathname.replace("/edit_card/", "");
@@ -35,7 +39,13 @@ export class CreateEditCard extends Component {
 
         return (
             <div className="main-functions">
-                <CardCommandRow {...this.props} idCard={idCard}/>
+                <userContext.Consumer>
+                  {({ userId }) => (
+                        <CardCommandRow {...this.props} 
+                                idCard={idCard}
+                                isMyCard={userId === this.state.userIdCardAdmin}/>
+                   )}
+                </userContext.Consumer>
                 <main className="card-container">
                     {congragulations}
                 </main>
