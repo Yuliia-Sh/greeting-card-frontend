@@ -4,6 +4,7 @@ export const userService = {
     login,
     logout,
     getUser,
+    setUserId,
     registerUser,
     getProfile,
     updateProfile,
@@ -20,19 +21,29 @@ function login(login, password) {
                 return response.json();
             } else {
                 localStorage.setItem('user', login);
-                console.log(response.json());
-                return null;
+                return response.json();
             }
         });
 }
 
+function setUserId(id) {
+    localStorage.setItem('userId', id); 
+}
+
 function logout() {
     serverService.sendRequest('/session', 'DELETE')
-        .then(() => localStorage.removeItem('user'));
+        .then(() => {localStorage.removeItem('user');
+                     localStorage.removeItem('userId')
+                     });
 }
 
 function getUser() {
-    return localStorage.getItem('user');
+    let user = localStorage.getItem('user');
+    let userId = localStorage.getItem('userId');
+    let obj = {};
+    obj['user'] = user;
+    obj['userId'] = userId;
+    return obj;
 }
 
 
