@@ -8,7 +8,9 @@ export const userService = {
     registerUser,
     getProfile,
     updateProfile,
-    updatePassword
+    updatePassword,
+    forgotPassword,
+    recoverPassword
 }
 
 function login(login, password) {
@@ -61,4 +63,13 @@ function updateProfile(formData) {
     
 function updatePassword(oldPassword, newPassword) {
     console.log('update password ');  
+    return serverService.sendRequest('/user/password', 'PUT', {oldPassword:oldPassword, newPassword:newPassword});
+}
+
+function forgotPassword(email) {
+   return serverService.sendRequest('/forgotPassword', 'POST', {email:email});
+}
+
+function recoverPassword(new_password, hash) {
+   return serverService.sendRequest(`/recover_password/${hash}`, 'PUT', {password:new_password}); 
 }

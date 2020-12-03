@@ -85,3 +85,20 @@
 .hidden {
     visibility: hidden;
 }
+
+#password-changeable {
+	display: flex;
+	margin-top: 60px;
+}
+
+.profile-password-change__column {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 60px 60px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 20px;
+}
