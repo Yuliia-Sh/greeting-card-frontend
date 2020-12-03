@@ -19,18 +19,14 @@
     font-size: 18px;
 }
 
-.white-button {
+.command-button--white {
     background-color: white;
     border: 2px solid #FEE600;
     margin-right: 80px;
 }
 
-.yellow-button {
+.command-button--yellow {
     background-color: #FEE600;
     border:none;
     margin-right: 32px;
-}
-
-.delete-block {
-    margin-right: 34px;
 }

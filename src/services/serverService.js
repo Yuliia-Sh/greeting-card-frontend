@@ -44,7 +44,7 @@ async function getData(url) {
 }
 
 async function sendFormData(url, method, formData) {
-    console.log('sendFormData ' + config.apiUrl + url + ' method: ' + method);
+    console.log('sendFormData  ' + config.apiUrl + url + ' method: ' + method);
     try {
         const response = await fetch(config.apiUrl + url, {
             method: method,

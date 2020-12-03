@@ -2,9 +2,9 @@ import React from 'react'
 import './style.css';
 
 import {Link} from 'react-router-dom'
-import editImg from '../../assets/images/edit.jpg';
-import deleteImg from '../../assets/images/delete.png';
-import {cardService} from '../../services/cardService';
+import editImg from '../../../assets/images/edit.jpg';
+import deleteImg from '../../../assets/images/delete.png';
+import {cardService} from '../../../services/cardService';
 
 export default function CardActions(props) {
 

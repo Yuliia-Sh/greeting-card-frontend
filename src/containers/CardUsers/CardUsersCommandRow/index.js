@@ -8,9 +8,9 @@ export default function CardUsersCommandRow(props) {
             <div className="filter"></div>
             <div className="actions__row">
                 <CommandButton caption="Clear choice" action={props.clearChoiceFunction}
-                               className="yellow-button command-button"/>
+                               className="command-button--yellow"/>
                 <CommandButton caption="Delete chosen" action={props.deleteUsersFunction}
-                               className="white-button command-button"
+                               className="command-button--white"
                                form="list-of-collaborators"/>
                 
                 <FormAdd {...props} onSubmit={props.addUserFunction}

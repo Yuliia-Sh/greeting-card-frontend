@@ -8,14 +8,14 @@ export default function ChangePasswordCommandRow(props) {
       <div className="filter"></div>
       <div className="actions__row">
         <CommandButton
-          className="yellow-button command-button"
+          className="command-button--yellow"
           caption="Save password"
           form="password-changeable"
           action={props.onSubmit}
         />
         <CommandButtonLink
           to="/profile"
-          className="white-button command-button"
+          className="command-button--white"
           caption="Cancel"
         />
       </div>

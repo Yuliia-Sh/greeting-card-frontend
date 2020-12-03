@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BlockCommandRow from "../../components/BlockCommandRow";
+import BlockCommandRow from "../../components/Blocks/BlockCommandRow";
 import "./style.css";
 import addImg from "../../assets/images/add.png";
 import pictureImg from "../../assets/images/picture.png";
@@ -8,72 +8,125 @@ import youtubeLinkImg from "../../assets/images/youtube-link.png";
 import { blockService } from "../../services/blockService";
 import { Editor } from "@tinymce/tinymce-react";
 import DeleteLinks from "../../forms/block/DeleteLinks";
+import config from "../../services/config";
 
 export class CreateEditBlock extends Component {
   constructor(props) {
     super(props);
+    let path = this.props.location.pathname;
+    let cardId = 0;
+    let blockId = 0;
+
+    if (path.includes("/add_block/")) {
+      let cardIdStr = path.replace("/add_block/", "");
+      cardId = parseInt(cardIdStr);
+    } else {
+      let blockIdStr = path.replace("/edit_block/", "");
+      blockId = parseInt(blockIdStr);
+    }
+
     this.state = {
       message: "",
-      plain_link: "",
       youtube: "",
-      card_id: this.props.location.pathname.replace("/add_block/", ""),
-      links:[],
+      card_id: cardId,
+      block_id: blockId,
+      links: [],
       imageFileLinksToAdd: [],
-      imageFilesToAdd:[],
+      imageFilesToAdd: [],
       audioFileLinksToAdd: [],
-      audioFilesToAdd:[]
+      audioFilesToAdd: [],
     };
   }
 
-  hanleChange = event => {
+  componentDidMount() {
+    if (this.state.block_id !== 0) {
+      blockService.getBlock(this.state.block_id).then((block) =>
+        this.setState({
+          message: block.message,
+          links: block.linkList,
+          card_id: block.cardId,
+        })
+      );
+    }
+  }
+
+  hanleChange = (event) => {
     let nameInput = event.target.name;
     let valueInput = event.target.value;
     this.setState({ [nameInput]: valueInput });
   };
 
-  handleEditorChange = event => {
+  handleEditorChange = (event) => {
     console.log("Content was updated:", event.target.getContent());
     this.setState({ message: event.target.getContent() });
   };
 
   saveBlock = () => {
-    blockService
-      .createBlock(this.state)
-      .then(() => this.props.history.push("/edit_card/" + this.state.card_id));
+    if (this.state.block_id === 0) {
+      blockService
+        .createBlock(this.state)
+        .then(() =>
+          this.props.history.push("/edit_card/" + this.state.card_id)
+        );
+    } else {
+      blockService
+        .updateBlock(this.state)
+        .then(() =>
+          this.props.history.push("/edit_card/" + this.state.card_id)
+        );
+    }
   };
+
+  deleteLinks = (listToDelete) => {
+    let newLinks = this.state.links.filter((link) => !listToDelete.includes(link.id));
+    this.setState({ links: newLinks });
+  };
+
+  checkFileSize(files, maxFileSize) {
+    let checked = true;
+    for (let i = 0; i < files.length; i++) {
+      if (files[i].size > maxFileSize) {
+        alert("File " + files[i].name + " is too big!");
+        checked = false;
+      }
+    }
+    return checked;
+  }
 
   handleFileChange(files, nameFileProperty, nameLinkProperty) {
     if (!files || files.length === 0) {
-      this.setState({[nameFileProperty]:[], [nameLinkProperty]:[]});
+      this.setState({ [nameFileProperty]: [], [nameLinkProperty]: [] });
       return;
-    } 
-    
-    let fileLinks = [];
-    for (let i = 0; i< files.length; i++) {
-      let fileLink = URL.createObjectURL(files[i]);
-      fileLinks.push(fileLink);
     }
-    this.setState({[nameFileProperty]:files, [nameLinkProperty]:fileLinks});
+
+    if (this.checkFileSize(files, config.maxFileSize)) {
+      let fileLinks = [];
+      for (let i = 0; i < files.length; i++) {
+        let fileLink = URL.createObjectURL(files[i]);
+        fileLinks.push(fileLink);
+      }
+      this.setState({
+        [nameFileProperty]: files,
+        [nameLinkProperty]: fileLinks,
+      });
+    }
   }
 
-  handleFileImagesChange = event => {
-    this.handleFileChange(event.target.files, "imageFilesToAdd", "imageFileLinksToAdd");
-    /*if (!event.target.files || event.target.files.length === 0) {
-      this.setState({imageFilesToAdd:[], imageFileLinksToAdd:[]});
-      return;
-    } 
-    
-    let fileLinks = [];
-    for (let i = 0; i< event.target.files.length; i++) {
-      let fileLink = URL.createObjectURL(event.target.files[i]);
-      fileLinks.push(fileLink);
-    }
-    this.setState({imageFilesToAdd:event.target.files, imageFileLinksToAdd:fileLinks});
-  */}
+  handleFileImagesChange = (event) => {
+    this.handleFileChange(
+      event.target.files,
+      "imageFilesToAdd",
+      "imageFileLinksToAdd"
+    );
+  };
 
-  handleFileAudioChange = event => {
-     this.handleFileChange(event.target.files, "audioFilesToAdd", "audioFileLinksToAdd");
-  }
+  handleFileAudioChange = (event) => {
+    this.handleFileChange(
+      event.target.files,
+      "audioFilesToAdd",
+      "audioFileLinksToAdd"
+    );
+  };
 
   render() {
     return (
@@ -84,7 +137,7 @@ export class CreateEditBlock extends Component {
             <div className="text-editor">
               <Editor
                 apiKey="ouptnlkv10gj407mb2lyn62l4hlgmdhgwk8b8i05vek2l1qg"
-                initialValue={this.state.message}
+                value={this.state.message}
                 init={{
                   height: 283,
                   menubar: false,
@@ -102,7 +155,7 @@ export class CreateEditBlock extends Component {
                 onChange={this.handleEditorChange}
               />
             </div>
-           
+
             <form id="elements-adder__row" method="post">
               <label htmlFor="image-files" className="adder" name="images">
                 <img src={pictureImg} alt="" className="element-type-icon" />
@@ -112,7 +165,7 @@ export class CreateEditBlock extends Component {
                   type="file"
                   id="image-files"
                   name="image-files"
-                  accept="image/*"
+                  accept={config.acceptedFileImage}
                   className="files-input"
                   onChange={this.handleFileImagesChange}
                   multiple
@@ -127,7 +180,7 @@ export class CreateEditBlock extends Component {
                   type="file"
                   id="audio-files"
                   name="audio-files"
-                  accept="audio/*"
+                  accept={config.acceptedFileAudio}
                   className="files-input"
                   onChange={this.handleFileAudioChange}
                   multiple
@@ -150,9 +203,11 @@ export class CreateEditBlock extends Component {
               </label>
             </form>
             <DeleteLinks
-                 imagesToAdd = {this.state.imageFileLinksToAdd}
-                 audioToAdd = {this.state.audioFileLinksToAdd}
-                 links = {this.state.links}
+              imagesToAdd={this.state.imageFileLinksToAdd}
+              audioToAdd={this.state.audioFileLinksToAdd}
+              links={this.state.links}
+              blockId={this.state.block_id}
+              deleteLinksFunction={this.deleteLinks}
             />
           </main>
         </div>

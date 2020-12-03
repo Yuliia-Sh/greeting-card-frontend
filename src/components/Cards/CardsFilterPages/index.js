@@ -1,6 +1,6 @@
 import React from 'react'
-import FormAdd from '../../forms/common/FormAdd';
-import FilterButton from '../UI/FilterButton'
+import FormAdd from '../../../forms/common/FormAdd';
+import FilterButton from '../../UI/FilterButton'
 import './style.css';
 
 export default function CardsFilterPages(props) {

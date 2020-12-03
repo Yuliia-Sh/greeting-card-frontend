@@ -2,8 +2,8 @@ import React from 'react'
 import './style.css';
 import {Link} from 'react-router-dom'
 
-import progressCardImg from '../../assets/images/card-in-progress-icon.png';
-import finishedCardImg from '../../assets/images/finished-card-icon.png';
+import progressCardImg from '../../../assets/images/card-in-progress-icon.png';
+import finishedCardImg from '../../../assets/images/finished-card-icon.png';
 
 
 export default function CardInfo(props) {

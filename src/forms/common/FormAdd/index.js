@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import CommandButton from "../../../components/UI/CommandButton";
 
 export default class FormAdd extends Component {
@@ -11,7 +11,7 @@ export default class FormAdd extends Component {
     };
   }
 
-  hanleChange = (event) => {
+  handleChange = (event) => {
     let nameInput = event.target.name;
     let valueInput = event.target.value;
     this.setState({ [nameInput]: valueInput });
@@ -29,18 +29,20 @@ export default class FormAdd extends Component {
           type="text"
           name="valueToAdd"
           placeholder={this.props.inputPlaceholder}
-          onChange={this.hanleChange}
+          onChange={this.handleChange}
         />
-        <CommandButton action={this.doAction} 
-                       caption = {this.props.buttonCaption}
-                       className="add-form-button command-button"/>
+        <CommandButton
+          action={this.doAction}
+          caption={this.props.buttonCaption}
+          className="add-form-button"
+        />
       </form>
     );
   }
 }
 
 FormAdd.propTypes = {
-    onSubmit: PropTypes.func,
-    inputPlaceholder: PropTypes.string,
-    buttonCaption: PropTypes.string
-}
+  onSubmit: PropTypes.func,
+  inputPlaceholder: PropTypes.string,
+  buttonCaption: PropTypes.string,
+};

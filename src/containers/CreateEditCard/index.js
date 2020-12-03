@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './style.css';
-import CardCommandRow from '../../components/CardCommandRow'
-import Block from '../../components/Block';
+import CardCommandRow from '../../components/Cards/CardCommandRow'
+import Block from '../../components/Blocks/Block';
 import {cardService} from '../../services/cardService';
 
 export class CreateEditCard extends Component {

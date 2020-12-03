@@ -7,7 +7,7 @@ export default function CommandRowDeleteLinks(props) {
       <div className="filter__blocks"></div>
       <div className="actions__row">
         <CommandButton
-          className="yellow-button command-button"
+          className="command-button--yellow"
           caption="Delete Selected"
           action={props.deleteLinksFunction}
         />
