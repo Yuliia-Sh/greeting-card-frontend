@@ -12,11 +12,13 @@ import Registration from '../../forms/user/Registration';
 import Profile from '../../forms/user/Profile';
 import ChangePassword from '../../forms/user/ChangePassword';
 import CardUsers from '../../containers/CardUsers';
+import ForgotPassword from '../../forms/user/ForgotPassword';
+import RecoverPassword from '../../forms/user/RecoverPassword';
 
 
 export default function SwitchRoute(props) {
 
-    const isLoggedIn = props.userName !== '';
+    const isLoggedIn = (typeof props.userName !== 'undefined') && (props.userName != null) && (props.userName !== '');
 
     if (isLoggedIn)
         return (
@@ -39,6 +41,8 @@ export default function SwitchRoute(props) {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/home" component={Home}/>
+                <Route path="/forgot_password" component={ForgotPassword}/>
+                <Route path="/recover_password/:hash" component={RecoverPassword}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Registration}/>
                 <Route path="/profile" component={Login}/>
