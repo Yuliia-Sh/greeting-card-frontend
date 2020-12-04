@@ -67,9 +67,9 @@ function updatePassword(oldPassword, newPassword) {
 }
 
 function forgotPassword(email) {
-   return serverService.sendRequest('/forgotPassword', 'POST', {email:email});
+   return serverService.sendRequest('/user/forgot_password', 'POST', {email:email});
 }
 
 function recoverPassword(new_password, hash) {
-   return serverService.sendRequest(`/recover_password/${hash}`, 'PUT', {password:new_password}); 
+   return serverService.sendRequest(`/user/recover_password/${hash}`, 'PUT', {password:new_password}); 
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import '../style.css';
 import LoginFilterPages from '../../../components/LoginFilterPages';
 import {userContext} from '../../../context/userContext';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
 
@@ -45,6 +46,7 @@ class Login extends React.Component {
                                onChange={(event) => this.setState({password: event.target.value})}
                                placeholder="password"/>
                         <br></br>
+                        <Link to="/forgot_password"> Forgot password </Link>
                         <br></br>      
                         <userContext.Consumer>
                             {({loginUser}) => (
